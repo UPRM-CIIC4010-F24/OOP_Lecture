@@ -18,7 +18,10 @@ int main() {
     cout << "Area of t2 " << t2.getArea() << endl;
     cout << "Area of t3 " << t3.getArea() << endl;
 
+    // An array of triangles
     Triangle triangles[] = {t1, t2, t3};
+    // Using a static method. Can be accessed through the Triangle
+    // class without the need of an instance.
     cout << "Which is the largest triangle: " << Triangle::findLargest(triangles, 3) << endl;
 
 }

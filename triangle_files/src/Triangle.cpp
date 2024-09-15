@@ -15,6 +15,8 @@ bool Triangle::largerThan(Triangle t2) {
     return this->getArea() > t2.getArea();
 }
 // Static function
+// Determining the size of an array can be tedious, 
+// so we ask for the size directly
 Triangle Triangle::findLargest(Triangle triangles[], int size) {
     Triangle largest = triangles[0];
     for (int i = 1; i < size; i++) {
