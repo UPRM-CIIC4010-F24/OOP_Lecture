@@ -6,6 +6,10 @@ A class that establishes coordinates
 It needs to be declared first so we can access it in the
 Triangle class.
 */
+// struct Coordinates {
+//     float x;
+//     float y;
+// };
 class Coordinates {
     private:
     // Coordinates x and y
@@ -101,6 +105,8 @@ float Triangle::getArea() {
 Triangle::Triangle(): sideA(10), sideB(10), sideC(10)
 {
   coords = Coordinates();
+    // coords.x = 5;
+    // coords.y = 10;
 }
 // Parametized constructor
 Triangle::Triangle(float a, float b, float c) {
@@ -132,9 +138,8 @@ will affect the object outside of the function.
 */ 
 void setSideATo100(Triangle t1, Triangle &t2) {
     t1.setSideA(100);
-    cout << "Side A inside the function for triangle passed by value" << t1.getSideA() << endl;
     t2.setSideA(100);
-    cout << "Side A inside the function for traingle passed by reference " << t2.getSideA() << endl;
+    cout<< "In function\t" << t1.getSideA()<<"\t" << t2.getSideA()<< endl;
 }
 // Example of function that returns a triangle
 Triangle sumTriangle(Triangle t1, Triangle t2) {
@@ -163,29 +168,31 @@ int main() {
     Triangle t2 = Triangle(5, 2.5, 5);
     Triangle t3 = Triangle(2, 2, 2);
     // Can access the public functions
-    cout << "T1 side " << t2.getSideB() << endl;
-    cout << t1.getArea() << endl;
-    cout << t2.getArea() << endl;
-    cout << t3.getArea() << endl;
+    cout << "T2 side B" << t2.getSideB() << endl;
+    cout << "Area t1: " << t1.getArea() << endl;
+    cout << "Area t2: " << t2.getArea() << endl;
+    cout << "Area t3: " << t3.getArea() << endl << endl;
 
-    // Can pass triangles
-    cout << "Is t1 larger than t2? "<< largerThan(t1, t2) << endl;
+    // Console will now print true/false instead of 0 or 1
+    cout << boolalpha;
 
-    cout<< "Side A inside of main for t1 (passed by value)" << t1.getSideA()<< endl;
-    cout<< "Side A inside of main for t2 (passed by reference)" << t2.getSideA()<< endl;
+    // Can pass triangles as parameters
+    cout << "Is t1 larger than t2? "<< largerThan(t1, t2) << endl << endl;
+
+    // Example if passing by value and by reference
+    cout << "Changing side A\n\t\tValue\tReference\n";
+    cout<< "In main\t\t" << t1.getSideA()<<"\t" << t2.getSideA()<< endl;
     setSideATo100(t1, t2);
-    cout<< "Side A inside of main for t1 (passed by value)" << t1.getSideA()<< endl;
-    cout<< "Side A inside of main for t2 (passed by reference)" << t2.getSideA()<< endl;
+    cout<< "In main\t\t" << t1.getSideA()<<"\t" << t2.getSideA()<< endl << endl;
 
     // Storing a triangle returned form a function
     Triangle t4 = sumTriangle(t1, t2);
     // Accessing its information
-    cout << "Side A t4 " << t4.getSideA() << endl;
+    cout << "t4 after adding t1 and t2: " << t4 << endl;
     // Accessing coordinates, notice that since coords is an object as well
     // When we access it we can also access it's functions.
-    cout << "Coordinates t1 " << t1.coords.getX() << ", " << t1.coords.getY() << endl;
-    // Printing a triangle object
-    cout<< t1;
+    cout << "Coordinates of t1 (" << t1.coords.getX() << ", " << t1.coords.getY() << ")\n\n";
+    // cout << "Coordinates of t1 (" << t1.coords.x << ", " << t1.coords.y << ")\n\n";
 }
 
 

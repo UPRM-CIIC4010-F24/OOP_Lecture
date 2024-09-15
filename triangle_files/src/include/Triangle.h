@@ -3,7 +3,6 @@
 // Defines the Triangle class and stores it in this constant
 // Constant usually follows FILENAME_H naming scheme.
 #define TRIANGLE_H
-
 class Triangle
 {
 private:
@@ -14,17 +13,20 @@ private:
 public:
     Triangle(/* args */);
     Triangle(float a, float b, float c);
+    Triangle(float a, float b, float c, float x, float y);
     ~Triangle();
     float getArea();
     float getPerimeter();
-    float getSideA(){
+    float getSideA()const{
         return sideA;
     }
-    float getSideB() {
+    float getSideB() const{
         return sideB;
     }
-    float getSideC() {
+    float getSideC() const{
         return sideC;
     }
+    bool largerThan(Triangle t2);
+    static Triangle findLargest(Triangle triangles[], int size);
 };
 #endif
